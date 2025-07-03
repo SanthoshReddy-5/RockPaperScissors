@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors Game</title>
+    <style type="text/css">
+        *{
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+        }
+
+        .nav-bar{
+            height: 12vh;
+            background-color: #642b73;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        h2{
+            font-size: 50px;
+            color: white;
+        }
+
+        .main-container{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            height: 80vh;
+        }
+
+        .sub-container1{
+            width: 70%;
+            height: 70%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 3px solid black;
+            border-radius: 15px;
+        }
+
+        .sub-container2{
+            width: 55%;
+            display: flex;
+            align-items: center;
+            justify-content: end;
+        }
+
+        img{
+            width: 70%;
+            height: 70%;
+        }
+
+        a{
+            margin-top: 25px;
+            padding: 15px 20px;
+            background-color: black;
+            color: white;
+            border:none;
+            border-radius: 10px;
+            font-size: 20px;
+            text-decoration: none;
+        }
+
+        a:hover{
+            transform: scale(1.1);
+        }
+
+        .footer{
+            background-color: #c6426e;
+            height: 8vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        p{
+            color: white;
+            font-size: 18px;
+        }
+
+
+        @media screen and (max-width:400px) {
+            h2{
+                font-size: 25px;
+            }
+
+            .sub-container1{
+                width: 85%;
+                height: 40%;
+            }
+
+            img{
+                width: 90%;
+                height: 50%;
+            }
+
+            .sub-container2{
+                width: 70%;
+            }
+
+            a{
+                font-size: 18px;
+                padding: 10px 15px;
+            }
+
+            p{
+               font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="nav-bar">
+        <h2>Rock - Paper - Scissors</h2>
+    </div>
+    <div class="main-container">
+        <div class="sub-container1">
+            <img src="./images/rockPaperScissors.png" alt="Rock Paper Scissors">
+        </div>
+        <div class="sub-container2">
+            <a href="./index.html">Let's Play!</a>
+        </div>
+    </div>
+    <div class="footer">
+        <p>Developed by Santhosh Reddy</p>
+    </div>
+</body>
+</html>

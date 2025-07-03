@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors Game</title>
+    <style type="text/css">
+        *{
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+        }
+
+        body{
+            background: linear-gradient(to right, #642b73, #c6426e);
+        }
+
+        .nav-bar{
+            height: 12vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-bottom: 3px solid white;
+        }
+
+        h2{
+            font-size: 50px;
+            color: white;
+        }
+
+        .main-container{
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        h1{
+            color: white;
+            font-size: 50px;
+        }
+
+        .choices button{
+            font-size: 30px;
+            padding: 10px 20px;
+            margin: 20px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.2s, background-color 0.2s;
+        }
+
+        .choices button:hover{
+            transform: scale(1.1);
+            background-color: #fff;
+        }
+
+        #result{
+            color: white;
+            margin-top: 30px;
+            font-size: 40px;
+            font-weight: bold;
+            opacity: 0;
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        #retryBtn{
+            margin-top: 35px;
+            padding: 10px 20px;
+            font-size: 25px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            display: none;
+            background-color: #df5d46;
+            color: white;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        #retryBtn:hover{
+            background-color: rgb(245, 51, 51);
+            transform: scale(1.05);
+        }
+
+        .footer{
+            height: 8vh;
+            border-top: 3px solid white;
+            display: flex;
+            align-items: center;
+            justify-content: start;
+        }
+
+        a{
+            margin-left: 50px;
+            padding: 10px;
+            background-color: black;
+            color: white;
+            border:none;
+            border-radius: 10px;
+            font-size: 20px;
+            text-decoration: none;
+        }
+
+        a:hover{
+            transform: scale(1.05);
+        }
+
+
+        @media screen and (max-width:400px){
+            h2{
+                font-size: 25px;
+            }
+
+            h1{
+                font-size: 30px;
+            }
+
+            .choices{
+                margin-top: 15px;
+                display: flex;
+                align-items: center;
+                flex-direction: column;
+                justify-content: center;
+            }
+
+            .choices button{
+                font-size: 20px;
+                width: 150px;
+                height: 50px;
+            }
+
+            #result{
+                font-size: 18px;
+            }
+
+            #retryBtn{
+                font-size: 16px;
+            }
+
+            a{
+                margin-left: 20px;
+                padding: 8px 10px;
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="nav-bar">
+        <h2>Rock - Paper - Scissors</h2>
+    </div>
+
+    <div class="main-container">
+        <h1>Select Your Choice:</h1>
+
+        <div class="choices" id="choicesDiv">
+            <button onclick="play('rock')">✊ Rock</button>
+            <button onclick="play('paper')">✋ Paper</button>
+            <button onclick="play('scissors')">✌️ Scissors</button>
+        </div>
+
+        <div id="result"></div>
+
+        <button id="retryBtn" onclick="retry()">Retry</button>
+    </div>
+
+    <div class="footer">
+        <a href="./intro.html">Get Back!</a>
+    </div>
+
+    <script>
+        function play(playerChoice) {
+            const choices = ["rock", "paper", "scissors"];
+            const computerChoice = choices[Math.floor(Math.random() * 3)];
+
+            let resultText = "";
+
+            if (playerChoice === computerChoice) {
+                resultText = `It's a tie! Computer also selected ${computerChoice}.`;
+            } else if (
+                (playerChoice === "rock" && computerChoice === "scissors") ||
+                (playerChoice === "paper" && computerChoice === "rock") ||
+                (playerChoice === "scissors" && computerChoice === "paper")
+            ) {
+                resultText = `🎉 You win! Computer selected ${computerChoice}.`;
+            } else {
+                resultText = `😞 You lose! Computer selected ${computerChoice}.`;
+            }
+
+            const resultDiv = document.getElementById("result");
+            resultDiv.innerText = resultText;
+
+            // Animate result
+            resultDiv.style.opacity = "0";
+            resultDiv.style.transform = "scale(0.8)";
+            setTimeout(() => {
+                resultDiv.style.opacity = "1";
+                resultDiv.style.transform = "scale(1)";
+            }, 50);
+
+            // Hide choices and show retry button
+            document.getElementById("choicesDiv").style.display = "none";
+            document.getElementById("retryBtn").style.display = "inline-block";
+        }
+
+        function retry() {
+            document.getElementById("result").innerText = "";
+            document.getElementById("choicesDiv").style.display = "flex";
+            document.getElementById("retryBtn").style.display = "none";
+        }
+    </script>
+
+</body>
+
+</html>
